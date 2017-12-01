@@ -1,0 +1,20 @@
+MySql:
+1:
+CREATE TABLE `product_master` ( `id` int(11) NOT NULL AUTO_INCREMENT, `product_id` int(11) NOT NULL, `product_name` varchar(255) NOT NULL, `quantity_bought_from` int(11) NOT NULL, `quantity_bought_to` int(11) NOT NULL, `price_per_item` int(11) NOT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+2:
+Name of the most expensive product:
+
+SELECT product_name FROM `product_master` ORDER BY price_per_item DESC LIMIT 1;
+
+Name of the cheapest product:
+
+SELECT `product_name` FROM `product_master` WHERE `quantity_bought_from` = 1 ORDER BY `price_per_item` ASC LIMIT 1;
+
+Per item price for 75 memory cards:
+
+SELECT `price_per_item` FROM `product_master` WHERE `product_name` = 'Memory Card' and 75 BETWEEN `quantity_bought_from` and `quantity_bought_to`;
+
+Per item price for 6 hammers:
+
+SELECT `price_per_item` FROM `product_master` WHERE `product_name` = 'hammers' and 6 BETWEEN `quantity_bought_from` and `quantity_bought_to`;
